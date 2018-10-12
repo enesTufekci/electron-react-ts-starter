@@ -4,9 +4,7 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const baseConfig = require('./webpack.base.config');
-const packageJson = require('./package.json');
-
-const APP_TITLE = process.env.APP_TITLE || 'Electron React';
+const packageJson = require('../package.json');
 
 module.exports = merge.smart(baseConfig, {
   mode: 'production',
@@ -18,8 +16,8 @@ module.exports = merge.smart(baseConfig, {
     rules: [
       {
         test: /\.tsx?$/,
-        include: [path.resolve(__dirname, 'src', 'renderer')],
-        exclude: [path.resolve(__dirname, 'src', 'main')],
+        include: [path.resolve(__dirname, '..', 'src', 'renderer')],
+        exclude: [path.resolve(__dirname, '..', 'src', 'main')],
         loader: 'ts-loader'
       },
       {

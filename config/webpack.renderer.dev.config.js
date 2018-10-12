@@ -14,8 +14,8 @@ module.exports = merge.smart(baseConfig, {
     rules: [
       {
         test: /\.tsx?$/,
-        include: [path.resolve(__dirname, 'src', 'renderer')],
-        exclude: [path.resolve(__dirname, 'src', 'main')],
+        include: [path.resolve(__dirname, '..', 'src', 'renderer')],
+        exclude: [path.resolve(__dirname, '..', 'src', 'main')],
         loaders: ['react-hot-loader/webpack', 'ts-loader']
       }
     ]
