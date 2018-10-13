@@ -17,6 +17,7 @@
   "homepage": "https://github.com/enesTufekci/electron-react-ts-starter",
   "main": "./dist/main.js",
   "scripts": {
+    "test-dev": "cross-env START_HOT=1 node ./config/start.js",
     "build-main": "cross-env NODE_ENV=production webpack --config ./config/webpack.main.prod.config.js",
     "build-renderer": "cross-env NODE_ENV=production webpack --config ./config/webpack.renderer.prod.config.js",
     "build": "npm run build-main && npm run build-renderer",
