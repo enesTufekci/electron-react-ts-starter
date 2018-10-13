@@ -1,18 +1,22 @@
-const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const baseConfig = require('./base');
-const packageJson = require('../../package.json');
 
 const paths = require('../paths');
+const appConfig = require(paths.APP_CONFIG);
 
 module.exports = merge.smart(baseConfig, {
   mode: 'production',
   target: 'electron-renderer',
+  name: 'renderer',
   entry: {
-    app: paths.RENDERER_ENTRY
+    app: './src/renderer/index.tsx'
+  },
+  output: {
+    path: paths.DIST,
+    filename: 'app.js'
   },
   module: {
     rules: [
@@ -48,7 +52,7 @@ module.exports = merge.smart(baseConfig, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: packageJson.build.productName
+      title: appConfig.productName || 'Electron App'
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')

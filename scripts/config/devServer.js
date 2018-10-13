@@ -1,5 +1,4 @@
 const PORT = 4455;
-const HOST = '0.0.0.0';
 
 module.exports = {
   port: PORT,

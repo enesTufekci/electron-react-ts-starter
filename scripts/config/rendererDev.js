@@ -7,7 +7,7 @@ const paths = require('../paths');
 
 module.exports = merge.smart(rendererBaseConfig, {
   mode: 'development',
-  entry: ['react-hot-loader/patch', './src/renderer/index.tsx'],
+  entry: ['react-hot-loader/patch', paths.RENDERER_ENTRY],
   module: {
     rules: [
       {

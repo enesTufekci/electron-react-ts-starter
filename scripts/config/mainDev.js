@@ -1,20 +1,25 @@
-const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-const baseConfig = require('./webpack.base.config');
+const baseConfig = require('./base');
+const paths = require('../paths');
 
 module.exports = merge.smart(baseConfig, {
   mode: 'development',
   target: 'electron-main',
+  name: 'main',
   entry: {
-    main: './src/main/index.ts'
+    main: paths.MAIN_ENTRY
+  },
+  output: {
+    path: paths.DIST,
+    filename: 'main.js'
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        include: [path.resolve(__dirname, '..', 'src', 'main', 'index.ts')],
+        include: [paths.MAIN_DIR],
         loader: 'ts-loader'
       }
     ]
